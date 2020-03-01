@@ -48,7 +48,7 @@
           <table class="table table-striped task-table">
             <!-- table header -->
             <thead>
-              <th>Task list</th>
+              <th>【Task list】</th>
               <th>&nbsp;</th>
             </thead>
         </div>
@@ -63,9 +63,8 @@
                   <a href="{{route('detail',$task->id)}}">{{ $task->name }}
                 </td> 
 
-             <!-- Delete Button -->
-             <td>   
-               <td>
+             <!--Task Delete Button -->
+             <td><td> {{-- 謎のスペース用 --}}
                  <td>
                     <form action = "{{ url('delete/'.$task->id) }}" method = "POST">
                       {{ csrf_field() }}
@@ -74,11 +73,9 @@
                       <button type="submit" class="btn btn-danger">
                         <i class="fa fa-trash"></i> Delete
                       </button>
-
                     </form>
                   </td>
-                </td>
-               </td>
+              </td></td>{{-- 謎のスペース用 --}}
 
               </tr>{{-- ($tasks as $task) ここまでforeachで回す --}}
               @endforeach

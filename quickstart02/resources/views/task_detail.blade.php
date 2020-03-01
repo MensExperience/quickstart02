@@ -34,15 +34,15 @@
          </form>
       </div>
     </div>
-           <!-- TODO: Current Tasks -->
+       
+<!-- TODO: Current Tasks -->
       @if (count($comments) > 0)
       <div class="panel panel-default">
-        <div class="panel-heading">
-          Comments list
-        </div>
-    
-        <div class="panel-body">
-          <table class="table table-striped task-table">
+        
+      <div class="panel-heading">Task name:  <a href="{{ url('/tasks') }}">【{{$task->name}}】</a></div>
+
+      <div class="panel-body">
+        <table class="table table-striped task-table">
             
             <!-- テーブルヘッダ -->
             <thead>
@@ -51,34 +51,33 @@
             </thead>
 
             <!-- テーブル本体 -->
-            <tbody>
-              @foreach ($comments as $comment)
-              
-              <tr>
-                <!-- コメント表示 -->
-                <td class="table-text">
-                  <div>{{ $comment->body }}</div>
-                </td> {{-- foreachで回す --}}
-              </tr>
+      <tbody>
+        @foreach ($comments as $comment)
+        <tr>                
+            <!-- コメント表示 -->
+        <td class="table-text">
+          <div>{{ $comment->body }}</div>
+        </td> {{-- foreachで回す --}}
 
-              {{-- コメント削除ボタン --}}
+        <!-- Comment Delete Button -->
+            <td><td> {{-- 謎のスペース用 --}}
             <td>
-              <form action = "{{ url('delete/'.$commnet->id) }}" method = "POST">
-                    {{ csrf_field() }}
-                    {{ method_field('DELETE') }}
-                    
-                    <button type="submit" class="btn btn-danger">
-                    <i class="fa fa-trash"></i>Delete</button>
-                  </form>
-             </td>
+              <form action = "{{ url('delete/'.$comment->id) }}" method = "POST">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <button type="submit" class="btn btn-danger">
+                <i class="fa fa-trash"></i>Delete</button>
+              </form>
+            </td>
+            </td></td>{{-- 謎のスペース用 --}}
+          </tr>              
+        @endforeach
+        </tbody>
+      </table>
+      </div>
 
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-
-      </div> 
-      @endif
+    </div> 
+  @endif
   </div>
 </div>
   @endsection

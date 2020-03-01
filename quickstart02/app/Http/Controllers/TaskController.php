@@ -14,7 +14,7 @@ class TaskController extends Controller
     /**
      * ユーザーの全タスクをリスト表⽰ * * 
      * @param Request $request 
-     * @return Response 
+     * @return Response
      */
     public function index(Request $request)
     {
@@ -61,7 +61,9 @@ class TaskController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function comment(Request $request, Task $task) /* フォームの中が入ってくる。commentのbody,comentしたtaskのidが必要 POST　$taksに情報いれてる */
+    public function comment(Request $request, Task $task)
+    /* フォームの中が入ってくる。
+    commentのbody,comentしたtaskのidが必要 POST $taksに情報いれてる */
     {
         $this->validate($request, [
             'body' => 'required|max:255',
@@ -84,6 +86,20 @@ class TaskController extends Controller
     {
         // タスクの削除処理
         $task->delete();
+        return redirect('/tasks');
+    }
+
+    /**
+     * 指定コメントの削除
+     *
+     * @param Request $request 
+     * @param Task $task 
+     * @return Response 
+     */
+    public function c_destroy(Request $request, Task $task)
+    {
+        // タスクの削除処理
+        $comment->delete();
         return redirect('/tasks');
     }
 }
