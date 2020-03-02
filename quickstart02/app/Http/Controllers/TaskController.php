@@ -68,12 +68,15 @@ class TaskController extends Controller
         $this->validate($request, [
             'body' => 'required|max:255',
         ]);
+
         $comment = new Comment;
         $comment->task_id = $task->id;
         $comment->body = $request->body;
         $comment->save();
 
-        return redirect()->route('detail', $task->id); /* 普通なら紐付けがいる。１対多 */
+        return redirect()->route('detail', $task->id);
+        /* 普通なら紐付けがいるけどめちゃ楽記述。
+        １対多の関係 */
     }
     /**
      * 指定タスクの削除
@@ -96,7 +99,7 @@ class TaskController extends Controller
      * @param Task $task 
      * @return Response 
      */
-    public function c_destroy(Request $request, Task $task)
+    public function comment_destroy(Request $request, Task $task)
     {
         // タスクの削除処理
         $comment->delete();
