@@ -69,7 +69,7 @@
                 <i class="fa fa-trash"></i>Delete</button>
               </form>
             </td>
-            </td></td>{{-- 謎のスペース用 --}}
+            </td></td>謎のスペース用
           </tr>              
         @endforeach
         </tbody>
