@@ -10,7 +10,7 @@
 | */
 
 use Illuminate\Routing\Route;
-
+//ルートの表示をtasksに変更（タイトルリンク用）
 Route::get('/', function () {
     return view('tasks');
 });
@@ -19,18 +19,27 @@ Route::get('/', function () {
 Route::get('/tasks', 'TaskController@index');
 
 // タスクの詳細
-// 名前付きルートは特定のルートへのURLを生成したり、リダイレクトしたりする場合に便利です。ルート定義にnameメソッドをチェーンすることで、そのルートに名前がつけられます。
 Route::get('/task/{task}', 'TaskController@detail')->name('detail');
+// 名前付きルートは特定のルートへのURLを生成したり、リダイレクトしたりする場合に便利です。ルート定義にnameメソッドをチェーンすることで、そのルートに名前がつけられます。
 
 // タスクの保存
 Route::post('/task', 'TaskController@store');
-// タスクの削除
-Route::delete('/delete/{task}', 'TaskController@destroy');
 
+
+
+// タスクの削除
+Route::delete('/task/delete/{task}', 'TaskController@destroy');
+// Route::delete('/delete/{task}', 'TaskController@destroy');
 
 // タスクコメント
-//名前付きルート
 Route::post('task/{task}/comment', 'TaskController@comment')->name('comment');
+//名前付きルート
+
 
 //コメントの削除
-Route::comment_destroy('/delete/{comment}/comment', 'TaskController@destroy');
+Route::delete('/comment/delete/{comment}', 'TaskController@destroy');
+// Route::comment_destroy('/comment/delete/{comment}', 'TaskController@destroy');
+
+//public function destroy_comment(Request $request, Task $task)
+//controllerのファンクション名とrouteのファンクション名合わせて上げればおｋです
+//routeで{comment}っていうパラメータもらってるから、モデル使って同じ名前の変数名にしてあげればそのidの全部のデータが$commentに入ります（ルートモデルバインディング）

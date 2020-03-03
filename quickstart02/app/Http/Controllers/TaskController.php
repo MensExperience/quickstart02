@@ -99,10 +99,13 @@ class TaskController extends Controller
      * @param Task $task 
      * @return Response 
      */
-    public function comment_destroy(Request $request, Task $task)
+    // public function TaskController@destroy(Request $request, Task $task)
+    //controllerのファンクション名とrouteのファンクション名合わせて上げればおｋです
+    public function destroy_comment(Request $request, Comment $comment)
     {
         // タスクの削除処理
         $comment->delete();
         return redirect('/tasks');
+        //routeで{comment}っていうパラメータもらってるから、モデル使って同じ名前の変数名にしてあげればそのidの全部のデータが$commentに入ります（ルートモデルバインディング）
     }
 }
