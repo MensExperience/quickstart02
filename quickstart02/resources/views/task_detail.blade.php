@@ -62,7 +62,10 @@
         <!-- Comment Delete Button -->
             <td><td> {{-- 謎のスペース用 --}}
             <td>
-              <form action = "{{ url('delete/'.$comment->id) }}" method = "POST">
+              <form action = "{{ url('comment/delete/'.$comment->id) }}" method = "POST">
+
+              <!--ここmiss-->
+              {{-- <form action = "{{ url('delete/'.$comment->id) }}" method = "POST"> --}}
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
                 <button type="submit" class="btn btn-danger">
