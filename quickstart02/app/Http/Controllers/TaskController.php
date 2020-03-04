@@ -32,6 +32,7 @@ class TaskController extends Controller
     {
         // $task = Task::find($task_id);
         // $tasks = Task::orderBy('created_at', 'asc')->get();
+
         $comments = $task->comments()->get();
         return view('task_detail', [
             'task' => $task,
@@ -96,16 +97,20 @@ class TaskController extends Controller
      * 指定コメントの削除
      *
      * @param Request $request 
-     * @param Task $task 
+     * @param Commnet $comment 
      * @return Response 
      */
     // public function TaskController@destroy(Request $request, Task $task)
-    //controllerのファンクション名とrouteのファンクション名合わせて上げればおｋです
+
     public function destroy_comment(Request $request, Comment $comment)
     {
-        // タスクの削除処理
+        //コメントの削除処理
         $comment->delete();
         return redirect('/tasks');
-        //routeで{comment}っていうパラメータもらってるから、モデル使って同じ名前の変数名にしてあげればそのidの全部のデータが$commentに入ります（ルートモデルバインディング）
+        //routeで{comment}っていうパラメータもらってるから、
+        //モデル使って同じ名前の変数名にしてあげれば
+        //そのidの全部のデータが$commentに入ります
+        //（ルートモデルバインディング）
     }
+    //controllerのファンクション名とrouteのファンクション名合わせて上げればおｋです
 }

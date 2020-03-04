@@ -36,8 +36,8 @@
     </div>
        
 <!-- TODO: Current Tasks -->
-      @if (count($comments) > 0)
-      <div class="panel panel-default">
+
+<div class="panel panel-default">
         
       <div class="panel-heading">Task name:  <a href="{{ url('/tasks') }}">【{{$task->name}}】</a></div>
 
@@ -49,6 +49,9 @@
               <th>Comment List</th>
               <th>&nbsp;</th>
             </thead>
+
+            {{-- ちょっと移動した --}}
+            @if (count($comments) > 0)
 
             <!-- テーブル本体 -->
       <tbody>
@@ -62,17 +65,19 @@
         <!-- Comment Delete Button -->
             <td><td> {{-- 謎のスペース用 --}}
             <td>
-              <form action = "{{ url('comment/delete/'.$comment->id) }}" method = "POST">
-
-              <!--ここmiss-->
-              {{-- <form action = "{{ url('delete/'.$comment->id) }}" method = "POST"> --}}
+                <form action = "{{ url('comment/delete/'.$comment->id) }}" method = "POST">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
                 <button type="submit" class="btn btn-danger">
                 <i class="fa fa-trash"></i>Delete</button>
               </form>
+              {{-- アカン！ <form action = "{{ url('delete/'.$comment->id) }}" method = "POST"> --}}
+              {{--さっきのエラーが何かって言うと、
+          action = “{{ url(‘delete/’.$comment->id) }}”
+          これで最終的に生成されるURLがdelete/{id}なので、これに対応するrouteがなかったからです--}}
+
             </td>
-            </td></td>謎のスペース用
+            </td></td>{{-- 謎のスペース用 --}}
           </tr>              
         @endforeach
         </tbody>
