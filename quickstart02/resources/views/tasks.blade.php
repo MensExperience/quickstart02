@@ -38,12 +38,11 @@
 
 {{-- bottom form start --}}
       <!-- TODO: Current Tasks -->
-      @if (count($tasks) > 0)
       <div class="panel panel-default">
         <div class="panel-heading">
           - Current task -
         </div>
-    
+        
         <div class="panel-body">
           <table class="table table-striped task-table">
             <!-- table header -->
@@ -52,6 +51,9 @@
               <th>&nbsp;</th>
             </thead>
         </div>
+
+        {{-- ちょっと移動した --}}
+        @if (count($tasks) > 0)
 
             <!-- table body -->
             <tbody>
@@ -71,8 +73,7 @@
                       {{ method_field('DELETE') }}
                       
                       <button type="submit" class="btn btn-danger">
-                        <i class="fa fa-trash"></i> Delete
-                      </button>
+                        <i class="fa fa-trash"></i> Delete</button>
                     </form>
                   </td>
               </td></td>{{-- 謎のスペース用 --}}
