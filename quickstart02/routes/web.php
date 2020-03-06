@@ -9,6 +9,7 @@
 | contains the "web" middleware group. Now create something great!
 | */
 
+// また悪さしてたんか〜ってやつ（勝手に作ったやつ）
 // use Illuminate\Routing\Route;
 // //ルートの表示をtasksに変更（タイトルリンク用）
 // Route::get('/', function () {
